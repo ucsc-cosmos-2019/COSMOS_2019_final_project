@@ -14,7 +14,7 @@
 /* This macro allows you to cleanly transition between states, and trigger
  * a STATE_TRANSITION event as well */
 #define TRANSITION_TO(x) { \
-    printf("Transitioning to state " #x); \
+    printf("Transitioning to state %s..\r\n", #x); \
     current_state = x; \
     ThrowEvent(STATE_TRANSITION); }
 

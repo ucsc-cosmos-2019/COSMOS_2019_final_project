@@ -12,7 +12,7 @@ enum {
     Idle,
 };
 
-int current_state;
+static int current_state;
 
 /* This function initializes the roach state machine.
  * At a minimum, this requires setting the first state.
