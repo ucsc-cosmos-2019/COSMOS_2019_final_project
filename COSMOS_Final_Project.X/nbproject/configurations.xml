@@ -11,7 +11,6 @@
       <itemPath>roach.h</itemPath>
       <itemPath>serial.h</itemPath>
       <itemPath>timers.h</itemPath>
-      <itemPath>Roach_State_Machine.h</itemPath>
       <itemPath>Roach_Events.h</itemPath>
       <itemPath>CrossNarrowBridge.h</itemPath>
       <itemPath>LocateExtractionPoint.h</itemPath>
@@ -32,12 +31,13 @@
       <itemPath>roach.c</itemPath>
       <itemPath>serial.c</itemPath>
       <itemPath>timers.c</itemPath>
-      <itemPath>Roach_State_Machine.c</itemPath>
       <itemPath>Roach_Events.c</itemPath>
       <itemPath>SM_main.c</itemPath>
       <itemPath>CrossNarrowBridge.c</itemPath>
       <itemPath>LocateExtractionPoint.c</itemPath>
       <itemPath>NavigateObstacleField.c</itemPath>
+      <itemPath>Roach_Top_Level_SM.c</itemPath>
+      <itemPath>Roach_Top_Level_SM.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -58,11 +58,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>Simulator</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>1.40</languageToolchainVersion>
+        <languageToolchainVersion>2.05</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.0.28"/>
+        <pack name="PIC32MX_DFP" vendor="Microchip" version="0.1.20"/>
       </packs>
       <compileType>
         <linkerTool>

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=COSMOS_Final_Project_Framework.X
+PROJECTNAME=COSMOS_Final_Project.X
 
 # Active Configuration
 DEFAULTCONF=default

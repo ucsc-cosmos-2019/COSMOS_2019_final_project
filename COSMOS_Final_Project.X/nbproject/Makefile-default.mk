@@ -30,16 +30,16 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=elf
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
-COMPARISON_BUILD=
+COMPARISON_BUILD=-mafrlcsj
 else
 COMPARISON_BUILD=
 endif
@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=AD.c BOARD.c IO_Ports.c pwm.c roach.c serial.c timers.c Roach_Events.c SM_main.c Roach_Top_Level_SM.c CrossNarrowBridge.c LocateExtractionPoint.c NavigateObstacleField.c
+SOURCEFILES_QUOTED_IF_SPACED=AD.c BOARD.c IO_Ports.c pwm.c roach.c serial.c timers.c Roach_Events.c SM_main.c CrossNarrowBridge.c LocateExtractionPoint.c NavigateObstacleField.c Roach_Top_Level_SM.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/AD.o ${OBJECTDIR}/BOARD.o ${OBJECTDIR}/IO_Ports.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/roach.o ${OBJECTDIR}/serial.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/Roach_Events.o ${OBJECTDIR}/SM_main.o ${OBJECTDIR}/Roach_Top_Level_SM.o ${OBJECTDIR}/CrossNarrowBridge.o ${OBJECTDIR}/LocateExtractionPoint.o ${OBJECTDIR}/NavigateObstacleField.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/AD.o.d ${OBJECTDIR}/BOARD.o.d ${OBJECTDIR}/IO_Ports.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/roach.o.d ${OBJECTDIR}/serial.o.d ${OBJECTDIR}/timers.o.d ${OBJECTDIR}/Roach_Events.o.d ${OBJECTDIR}/SM_main.o.d ${OBJECTDIR}/Roach_Top_Level_SM.o.d ${OBJECTDIR}/CrossNarrowBridge.o.d ${OBJECTDIR}/LocateExtractionPoint.o.d ${OBJECTDIR}/NavigateObstacleField.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/AD.o ${OBJECTDIR}/BOARD.o ${OBJECTDIR}/IO_Ports.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/roach.o ${OBJECTDIR}/serial.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/Roach_Events.o ${OBJECTDIR}/SM_main.o ${OBJECTDIR}/CrossNarrowBridge.o ${OBJECTDIR}/LocateExtractionPoint.o ${OBJECTDIR}/NavigateObstacleField.o ${OBJECTDIR}/Roach_Top_Level_SM.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/AD.o.d ${OBJECTDIR}/BOARD.o.d ${OBJECTDIR}/IO_Ports.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/roach.o.d ${OBJECTDIR}/serial.o.d ${OBJECTDIR}/timers.o.d ${OBJECTDIR}/Roach_Events.o.d ${OBJECTDIR}/SM_main.o.d ${OBJECTDIR}/CrossNarrowBridge.o.d ${OBJECTDIR}/LocateExtractionPoint.o.d ${OBJECTDIR}/NavigateObstacleField.o.d ${OBJECTDIR}/Roach_Top_Level_SM.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/AD.o ${OBJECTDIR}/BOARD.o ${OBJECTDIR}/IO_Ports.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/roach.o ${OBJECTDIR}/serial.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/Roach_Events.o ${OBJECTDIR}/SM_main.o ${OBJECTDIR}/Roach_Top_Level_SM.o ${OBJECTDIR}/CrossNarrowBridge.o ${OBJECTDIR}/LocateExtractionPoint.o ${OBJECTDIR}/NavigateObstacleField.o
+OBJECTFILES=${OBJECTDIR}/AD.o ${OBJECTDIR}/BOARD.o ${OBJECTDIR}/IO_Ports.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/roach.o ${OBJECTDIR}/serial.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/Roach_Events.o ${OBJECTDIR}/SM_main.o ${OBJECTDIR}/CrossNarrowBridge.o ${OBJECTDIR}/LocateExtractionPoint.o ${OBJECTDIR}/NavigateObstacleField.o ${OBJECTDIR}/Roach_Top_Level_SM.o
 
 # Source Files
-SOURCEFILES=AD.c BOARD.c IO_Ports.c pwm.c roach.c serial.c timers.c Roach_Events.c SM_main.c Roach_Top_Level_SM.c CrossNarrowBridge.c LocateExtractionPoint.c NavigateObstacleField.c
+SOURCEFILES=AD.c BOARD.c IO_Ports.c pwm.c roach.c serial.c timers.c Roach_Events.c SM_main.c CrossNarrowBridge.c LocateExtractionPoint.c NavigateObstacleField.c Roach_Top_Level_SM.c
 
 
 CFLAGS=
@@ -85,11 +85,11 @@ FIXDEPS=fixDeps
 
 # The following macros may be used in the pre and post step lines
 Device=PIC32MX340F512H
-ProjectDir="C:\Users\AutonomousSystemsLab\Dropbox\COSMOS\Project\COSMOS_2019_Final_Project_Framework_1\COSMOS_Final_Project_Framework.X"
+ProjectDir="C:\Users\andavid\final_project\COSMOS_Final_Project.X"
 ConfName=default
-ImagePath="dist\default\${IMAGE_TYPE}\COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
+ImagePath="dist\default\${IMAGE_TYPE}\COSMOS_Final_Project.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
 ImageDir="dist\default\${IMAGE_TYPE}"
-ImageName="COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
+ImageName="COSMOS_Final_Project.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IsDebug="true"
 else
@@ -100,7 +100,7 @@ endif
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 	@echo "--------------------------------------"
 	@echo "User defined post-build step: [copy ${ImagePath} . /Y]"
 	@copy ${ImagePath} . /Y
@@ -177,12 +177,6 @@ ${OBJECTDIR}/SM_main.o: SM_main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/SM_main.o 
 	@${FIXDEPS} "${OBJECTDIR}/SM_main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -MMD -MF "${OBJECTDIR}/SM_main.o.d" -o ${OBJECTDIR}/SM_main.o SM_main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/Roach_Top_Level_SM.o: Roach_Top_Level_SM.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Roach_Top_Level_SM.o.d 
-	@${RM} ${OBJECTDIR}/Roach_Top_Level_SM.o 
-	@${FIXDEPS} "${OBJECTDIR}/Roach_Top_Level_SM.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -MMD -MF "${OBJECTDIR}/Roach_Top_Level_SM.o.d" -o ${OBJECTDIR}/Roach_Top_Level_SM.o Roach_Top_Level_SM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/CrossNarrowBridge.o: CrossNarrowBridge.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/CrossNarrowBridge.o.d 
@@ -200,6 +194,12 @@ ${OBJECTDIR}/NavigateObstacleField.o: NavigateObstacleField.c  nbproject/Makefil
 	@${RM} ${OBJECTDIR}/NavigateObstacleField.o.d 
 	@${RM} ${OBJECTDIR}/NavigateObstacleField.o 
 	@${FIXDEPS} "${OBJECTDIR}/NavigateObstacleField.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -MMD -MF "${OBJECTDIR}/NavigateObstacleField.o.d" -o ${OBJECTDIR}/NavigateObstacleField.o NavigateObstacleField.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/Roach_Top_Level_SM.o: Roach_Top_Level_SM.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Roach_Top_Level_SM.o.d 
+	@${RM} ${OBJECTDIR}/Roach_Top_Level_SM.o 
+	@${FIXDEPS} "${OBJECTDIR}/Roach_Top_Level_SM.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -MMD -MF "${OBJECTDIR}/Roach_Top_Level_SM.o.d" -o ${OBJECTDIR}/Roach_Top_Level_SM.o Roach_Top_Level_SM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 else
 ${OBJECTDIR}/AD.o: AD.c  nbproject/Makefile-${CND_CONF}.mk
@@ -256,12 +256,6 @@ ${OBJECTDIR}/SM_main.o: SM_main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/SM_main.o 
 	@${FIXDEPS} "${OBJECTDIR}/SM_main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -MMD -MF "${OBJECTDIR}/SM_main.o.d" -o ${OBJECTDIR}/SM_main.o SM_main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/Roach_Top_Level_SM.o: Roach_Top_Level_SM.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Roach_Top_Level_SM.o.d 
-	@${RM} ${OBJECTDIR}/Roach_Top_Level_SM.o 
-	@${FIXDEPS} "${OBJECTDIR}/Roach_Top_Level_SM.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -MMD -MF "${OBJECTDIR}/Roach_Top_Level_SM.o.d" -o ${OBJECTDIR}/Roach_Top_Level_SM.o Roach_Top_Level_SM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/CrossNarrowBridge.o: CrossNarrowBridge.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/CrossNarrowBridge.o.d 
@@ -280,6 +274,12 @@ ${OBJECTDIR}/NavigateObstacleField.o: NavigateObstacleField.c  nbproject/Makefil
 	@${RM} ${OBJECTDIR}/NavigateObstacleField.o 
 	@${FIXDEPS} "${OBJECTDIR}/NavigateObstacleField.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -MMD -MF "${OBJECTDIR}/NavigateObstacleField.o.d" -o ${OBJECTDIR}/NavigateObstacleField.o NavigateObstacleField.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/Roach_Top_Level_SM.o: Roach_Top_Level_SM.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Roach_Top_Level_SM.o.d 
+	@${RM} ${OBJECTDIR}/Roach_Top_Level_SM.o 
+	@${FIXDEPS} "${OBJECTDIR}/Roach_Top_Level_SM.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -MMD -MF "${OBJECTDIR}/Roach_Top_Level_SM.o.d" -o ${OBJECTDIR}/Roach_Top_Level_SM.o Roach_Top_Level_SM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -291,15 +291,15 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    bootloader320.ld
+dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    bootloader320.ld
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_SIMULATOR=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml
+	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_SIMULATOR=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml
 	
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   bootloader320.ld
+dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   bootloader320.ld
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml
-	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project_Framework.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml
+	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/COSMOS_Final_Project.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
 .pre:
