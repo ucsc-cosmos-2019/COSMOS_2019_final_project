@@ -29,6 +29,14 @@
 
 #define ROACH_MAX_SPEED 100 
 
+double MeasureDistance(void);
+
+
+void doEverything(void);
+
+void readSensor(void);
+
+void turn90(void);
 /**
  * @Function Roach_Init(void)
  * @param None.
