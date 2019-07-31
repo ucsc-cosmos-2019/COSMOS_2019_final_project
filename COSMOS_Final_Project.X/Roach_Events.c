@@ -43,6 +43,29 @@ Event CheckForTimerEvents(void)
     return NO_EVENT;
 }
 
+Event CheckBothBumperPressed(void){
+    static char leftFirst = 0;
+    static char firstCheck = 0;
+    static char previous_fr_bumper_state = BUMPER_NOT_TRIPPED;
+    static char previous_fl_bumper_state = BUMPER_NOT_TRIPPED;
+    char current_fr_bumper_state = Roach_ReadFrontRightBumper();    
+    char current_fl_bumper_state = Roach_ReadFrontLeftBumper();
+    if((previous_fl_bumper_state == BUMPER_NOT_TRIPPED && current_fr_bumper_state == BUMPER_TRIPPED) || (previous_fr_bumper_state == BUMPER_NOT_TRIPPED && current_fr_bumper_state == BUMPER_TRIPPED)){
+        TIMERS_InitTimer(0, 50);
+        firstCheck = 1;
+    }
+    if(firstCheck){
+        firstCheck = 0;
+        if(TIMERS_IsTimerExpired(0)){
+                if(current_fl_bumper_state == BUMPER_TRIPPED && current_fr_bumper_state == BUMPER_TRIPPED){
+                    return BOTH_BUMPER_PRESSED;
+                }
+        }
+    }
+    previous_fr_bumper_state = current_fr_bumper_state;
+    previous_fl_bumper_state = current_fl_bumper_state;
+    return NO_EVENT;
+}
 Event CheckForBumperEvents(void)
 {
     static char previous_fl_bumper_state = BUMPER_NOT_TRIPPED;
