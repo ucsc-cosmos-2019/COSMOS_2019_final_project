@@ -1,85 +1,109 @@
+/*
+ * File:   Hello_World_main.c
+ * Author: AutonomousSystemsLab
+ *
+ * Created on July 5, 2019, 1:32 PM
+ */
+
+//Standard C libraries:
 #include <stdio.h>
+#include <stdlib.h>
 
-#include "Roach_Events.h"
+//Microchip's specialized library
+#include <xc.h>
+
+//A library to use the uc32 board
+#include "BOARD.h"
 #include "roach.h"
-#include "Roach_Top_Level_SM.h"
 #include "timers.h"
-
-#include "NavigateObstacleField.h"
-#include "CrossNarrowBridge.h"
-#include "LocateExtractionPoint.h"
+#include "Roach_State_Machine.h"
+#include "Roach_Events.h"
 
 
-//a list of states that this SM uses:
 
-enum {
-    NavigateObstacleField,
-    CrossNarrowBridge,
-    LocateExtractionPoint,
-    Idle,
-};
-
-int current_state;
-
-/* This function initializes the roach state machine.
- * At a minimum, this requires setting the first state.
- * Also, execute any actions associated with initializing the SM 
- * (that is, the actions on the arrow from the black dot in the SM diagram)*/
-void Initialize_RoachStateMachine(void)
+void PrintEvent(Event event)
 {
-    current_state = NavigateObstacleField;
-    ThrowEvent(STATE_TRANSITION);
-    
-    Initialize_NavigateObstacleField_StateMachine();
-    Initialize_CrossNarrowBridge_StateMachine();
-    Initialize_LocateExtractionPoint_StateMachine();
-};
+    switch (event) {
 
-/* 
- * @briefThis function feeds newly detected events to the roach state machine.
- * @param event:  The most recently detected event*/
-void Run_Roach_TopLevel_StateMachine(Event event)
-{
-    switch (current_state) {
-    case NavigateObstacleField:
-        printf("Top level state:  NavigateObstacleField\r\n");
-        event = Run_Roach_NavigateObstacleField_StateMachine(event);
-        if (event == ENTERED_DARK) {
-            TRANSITION_TO(CrossNarrowBridge);
-        }
+    case NO_EVENT:
+        printf("Event:  NO_EVENT\r\n");
         break;
-        
-    case CrossNarrowBridge:
-        printf("Top level state:  CrossNarrowBridge\r\n");
-        event = Run_Roach_CrossNarrowBridge_StateMachine(event);
-        if (event == FRONT_LEFT_BUMP_PRESSED || event == FRONT_RIGHT_BUMP_PRESSED) {
-            TRANSITION_TO(LocateExtractionPoint);
-        }
+    case FRONT_RIGHT_BUMP_PRESSED:
+        printf("Event:  FRONT_RIGHT_BUMP_PRESSED\r\n");
         break;
-        
-    case LocateExtractionPoint:
-        printf("Top level state:  LocateExtractionPoint\r\n");
-        if (event == FRONT_LEFT_BUMP_PRESSED){
-            ThrowEvent(DONE);
-        }
-        event = Run_Roach_LocateExtractionPoint_StateMachine(event);
-        if (event == DONE) {
-            TRANSITION_TO(Idle);
-        }
+    case FRONT_LEFT_BUMP_PRESSED:
+        printf("Event:  FRONT_LEFT_BUMP_PRESSED\r\n");
         break;
+    case REAR_RIGHT_BUMP_PRESSED:
+        printf("Event:  REAR_RIGHT_BUMP_PRESSED\r\n");
+        break;
+    case REAR_LEFT_BUMP_PRESSED:
+        printf("Event:  REAR_LEFT_BUMP_PRESSED\r\n");
+        break;
+    case FRONT_RIGHT_BUMP_RELEASED:
+        printf("Event:  FRONT_RIGHT_BUMP_RELEASED\r\n");
+        break;
+    case FRONT_LEFT_BUMP_RELEASED:
+        printf("Event:  FRONT_LEFT_BUMP_RELEASED\r\n");
+        break;
+    case REAR_RIGHT_BUMP_RELEASED:
+        printf("Event:  REAR_RIGHT_BUMP_RELEASED\r\n");
+        break;
+    case REAR_LEFT_BUMP_RELEASED:
+        printf("Event:  REAR_LEFT_BUMP_RELEASED\r\n");
+        break;
+    case ENTERED_DARK:
+        printf("Event:  ENTERED_DARK\r\n");
+        break;
+    case ENTERED_LIGHT:
+        printf("Event:  ENTERED_LIGHT\r\n");
+        break;
+    case NAV_TIMER_EXPIRED:
+        printf("Event:  NAV_TIMER_EXPIRED\r\n");
+        break;
+    case STALL:
+        printf("Event: STALLING\r\n");
+        default:
+            printf("Unknown Event");
 
-    case Idle:
-        printf("Top level state:  Idle\r\n");
-        if (event == STATE_TRANSITION){
-            TIMERS_InitTimer(NAV_TIMER, 500);
-            Roach_LEDSSet(0xFFF);
-        }
-        if (event == NAV_TIMER_EXPIRED) {
-            TIMERS_InitTimer(NAV_TIMER, 500);
-            Roach_LEDSSet(~Roach_LEDSGet());
-        }
-        break;
 
-        
-    };
+    }
+
 }
+
+
+int main(void)
+{
+    // <editor-fold defaultstate="collapsed" desc="//Initialization code (BOARD_Init(), etc)">
+
+
+    //These calls configure the Pic32 so that it can interact with the Roach hardware
+    BOARD_Init();
+    Roach_Init();
+    TIMERS_Init();
+
+    //Initialization code here:
+    printf("Welcome to Roach State Machine lab, compiled on %s %s\r\n", __TIME__, __DATE__);
+    // </editor-fold>
+
+    //first, setup the framework:
+    Initialize_RoachStateMachine();
+
+    while (1) {
+        //continuous services (event checkers):
+        Event this_event = CheckForAllEvents();
+
+        if (this_event != NO_EVENT) {
+            PrintEvent(this_event);
+            //run service:
+            Run_RoachStateMachine(this_event);
+            //clear event:
+            this_event = NO_EVENT;
+
+        }
+
+    }
+
+    return (EXIT_SUCCESS);
+}
+
