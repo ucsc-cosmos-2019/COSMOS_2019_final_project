@@ -29,7 +29,7 @@ void Initialize_LocateExtractionPoint_StateMachine(void)
 Event Run_Roach_LocateExtractionPoint_StateMachine(Event event)
 {
     switch (current_state) {
-     //SM here   
+//HERE IS MY SM!
     }        
     return event;
 };
