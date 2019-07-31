@@ -9,6 +9,8 @@
 #include <BOARD.h>
 #include <xc.h>
 
+#include <stdio.h>
+
 
 #include <pwm.h>
 #include <serial.h>
@@ -59,6 +61,7 @@
 #define LED_On(i) *LED_LATCLR[(unsigned int)i] = LED_bitsMap[(unsigned int)i];
 #define LED_Off(i) *LED_LATSET[(unsigned int)i] = LED_bitsMap[(unsigned int)i];
 #define LED_Get(i) (*LED_LAT[(unsigned int)i]&LED_bitsMap[(unsigned int)i])
+
 
 
 #else
@@ -145,6 +148,31 @@ static unsigned short int LED_bitsMap[] = {BIT_7, BIT_5, BIT_10, BIT_11, BIT_3, 
 /*******************************************************************************
  * PUBLIC FUNCTIONS                                                           *
  ******************************************************************************/
+
+
+#define SONIC_SPEED 34000 // centimeters per second
+double MeasureDistance(void) {
+    static double distance = 0;
+    TRISBbits.TRISB14 = 0;
+    PORTBbits.RB14 = 0;
+    int i;
+    PORTBbits.RB14 = 1;
+    
+    for (i = 0; i < 1000; i++) {}
+    
+    PORTBbits.RB14 = 0;
+    
+    while (!PORTBbits.RB15) {}
+    
+    int timer = 0;
+    
+    while (PORTBbits.RB15) {
+        timer++;
+    }
+    double latest_distance = SONIC_SPEED * (timer / 1000000.0) / 2;
+    distance = 0.95 * distance + .05 *latest_distance;
+    return distance;
+}
 
 /**
  * @Function Roach_Init(void)
